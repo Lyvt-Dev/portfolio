@@ -1,6 +1,153 @@
-// Main UI interactions for the portfolio
 (function () {
   const root = document.documentElement;
+  const langToggleBtn = document.getElementById('langToggle');
+  const DEFAULT_LANG = 'en';
+  const savedLang = localStorage.getItem('lang') || DEFAULT_LANG;
+  const i18n = {
+    en: {
+      'nav.about': 'About',
+      'nav.skills': 'Skills',
+      'nav.projects': 'Projects',
+      'nav.contact': 'Contact',
+      'nav.lang_btn': 'EN',
+
+      'hero.eyebrow': 'Hi, I’m <span class="accent">Lyvt</span> <span class="sparkle" aria-hidden="true">✨</span>',
+      'hero.headline': 'I build cozy, modern experiences on the web',
+      'hero.subtitle': 'Focus: Web Dev • Backend • Game Dev • AI things — translating ideas into delightful products.',
+      'hero.cta_projects': '<i class="fa-solid fa-rocket"></i> See Projects',
+      'hero.cta_contact': '<i class="fa-solid fa-envelope"></i> Contact',
+      'hero.badge_1': '<i class="fa-solid fa-star"></i> 3+ years building stuff',
+      'hero.badge_2': '<i class="fa-brands fa-github"></i> Open-source friendly',
+      'hero.badge_3': '<i class="fa-solid fa-heart"></i> love for VTuber <3, comfy UIs',
+
+      'about.title': 'About Me',
+      'about.subtitle': 'Short and sweet.',
+      'about.p1': 'I’m a developer who loves crafting playful, high-quality experiences. My current focus is <strong>Web Development</strong> and <strong>Backend</strong>, with occasional adventures in <strong>Game Dev</strong> and <strong>AI</strong> tinkering. I enjoy systems that feel <em>comfy</em> and accessible.',
+      'about.p2': 'Outside of code: coffee, synthwave playlists, and VTuber streams in the background.',
+      'about.fact_1': '<i class="fa-solid fa-location-dot"></i> Based in Germany',
+      'about.fact_2': '<i class="fa-solid fa-briefcase"></i> Open to requests & collabs',
+      'about.fact_3': '<i class="fa-solid fa-graduation-cap"></i> Self-taught, always learning',
+      'about.fact_4': '<i class="fa-solid fa-cake-candles"></i> Age: <span id="ageValue">18</span>',
+
+      'skills.title': 'Skills & Tech',
+      'skills.subtitle': 'A little badge wall of tools I love using.',
+
+      'projects.title': 'Projects',
+      'projects.subtitle': 'Highlights with a bit of story.',
+      'projects.card_1.title': 'LunixVT Homepage',
+      'projects.card_1.desc': 'A custom website built for the streamer LunixVT as a central hub for their online presence. The site works as a stylish linktree, featuring animated backgrounds, background music, and a clean UI that connects fans to Twitch, YouTube, TikTok, Twitter, and more.',
+      'projects.card_1.demo': 'Live Demo',
+      'projects.card_1.github': '<i class="fa-brands fa-github"></i> GitHub',
+
+      'contact.title': 'Contact',
+      'contact.subtitle': 'Let’s build something together.',
+      'contact.intro': 'My inbox is always open — whether you have a question, a project idea, or just want to say hi.',
+      'contact.write_email': 'Write Email',
+      'contact.copy': '<i class="fa-solid fa-copy"></i> Copy',
+      'contact.github': '<i class="fa-brands fa-github"></i> GitHub',
+      'contact.twitter': '<i class="fa-brands fa-x-twitter"></i> Twitter',
+      'contact.discord': '<i class="fa-brands fa-discord"></i> Discord',
+
+      'modal.discord_title': 'Discord',
+      'modal.discord_subtitle': 'Connect with me on Discord',
+      'modal.username': 'Username',
+      'modal.user_id': 'User ID',
+      'modal.copy': '<i class="fa-solid fa-copy"></i> Copy',
+      'modal.open_profile': '<i class="fa-brands fa-discord"></i> Open Profile',
+
+      'footer.text': '  Lyvt. Built with care <span class="sparkle" aria-hidden="true">✨</span>',
+
+      'common.copied': '<i class="fa-solid fa-check"></i> Copied!',
+      'common.copy_prompt': 'Copy value:',
+      'common.copy_email_prompt': 'Copy email address:'
+    },
+    de: {
+      'nav.about': 'Über mich',
+      'nav.skills': 'Fähigkeiten',
+      'nav.projects': 'Projekte',
+      'nav.contact': 'Kontakt',
+      'nav.lang_btn': 'DE',
+
+      'hero.eyebrow': 'Hi, ich bin <span class="accent">Lyvt</span> <span class="sparkle" aria-hidden="true">✨</span>',
+      'hero.headline': 'Ich baue gemütliche, moderne Web-Erlebnisse',
+      'hero.subtitle': 'Fokus: Web Dev • Backend • Game Dev • KI — Ideen in angenehme Produkte verwandeln.',
+      'hero.cta_projects': '<i class="fa-solid fa-rocket"></i> Projekte ansehen',
+      'hero.cta_contact': '<i class="fa-solid fa-envelope"></i> Kontakt',
+      'hero.badge_1': '<i class="fa-solid fa-star"></i> 3+ Jahre Erfahrung',
+      'hero.badge_2': '<i class="fa-brands fa-github"></i> Open-Source freundlich',
+      'hero.badge_3': '<i class="fa-solid fa-heart"></i> liebe für VTuber <3, gemütliche UI',
+
+      'about.title': 'Über mich',
+      'about.subtitle': 'Kurz und knackig.',
+      'about.p1': 'Ich bin Entwickler und liebe es, verspielte, hochwertige Erlebnisse zu schaffen. Mein aktueller Fokus liegt auf <strong>Webentwicklung</strong> und <strong>Backend</strong>, mit gelegentlichen Abstechern in <strong>Game Dev</strong> und <strong>KI</strong>. Ich mag Systeme, die sich <em>gemütlich</em> und zugänglich anfühlen.',
+      'about.p2': 'Abseits vom Code: Kaffee, Synthwave-Playlists und VTuber-Streams im Hintergrund.',
+      'about.fact_1': '<i class="fa-solid fa-location-dot"></i> Sitz in Deutschland',
+      'about.fact_2': '<i class="fa-solid fa-briefcase"></i> Offen für Anfragen & Kollabs',
+      'about.fact_3': '<i class="fa-solid fa-graduation-cap"></i> Autodidakt, stets am Lernen',
+      'about.fact_4': '<i class="fa-solid fa-cake-candles"></i> Alter: <span id="ageValue">18</span>',
+
+      'skills.title': 'Fähigkeiten & Tech',
+      'skills.subtitle': 'Eine kleine Abzeichenwand von Tools, die ich gerne nutze.',
+
+      'projects.title': 'Projekte',
+      'projects.subtitle': 'Highlights mit ein wenig Geschichte.',
+      'projects.card_1.title': 'LunixVT Startseite',
+      'projects.card_1.desc': 'Eine individuelle Webseite für den Streamer LunixVT als zentrale Anlaufstelle. Die Seite funktioniert wie ein stilvolles Linktree mit animierten Hintergründen, Musik und einer klaren UI, die Fans mit Twitch, YouTube, TikTok, Twitter und mehr verbindet.',
+      'projects.card_1.demo': 'Live-Demo',
+      'projects.card_1.github': '<i class="fa-brands fa-github"></i> GitHub',
+
+      'contact.title': 'Kontakt',
+      'contact.subtitle': 'Lass uns gemeinsam etwas aufbauen.',
+      'contact.intro': 'Mein Postfach ist immer offen — ob Frage, Projektidee oder einfach nur Hallo sagen.',
+      'contact.write_email': 'E-Mail schreiben',
+      'contact.copy': '<i class="fa-solid fa-copy"></i> Kopieren',
+      'contact.github': '<i class="fa-brands fa-github"></i> GitHub',
+      'contact.twitter': '<i class="fa-brands fa-x-twitter"></i> Twitter',
+      'contact.discord': '<i class="fa-brands fa-discord"></i> Discord',
+
+      'modal.discord_title': 'Discord',
+      'modal.discord_subtitle': 'Verbinde dich mit mir auf Discord',
+      'modal.username': 'Benutzername',
+      'modal.user_id': 'Benutzer-ID',
+      'modal.copy': '<i class="fa-solid fa-copy"></i> Kopieren',
+      'modal.open_profile': '<i class="fa-brands fa-discord"></i> Profil öffnen',
+
+      'footer.text': '  Lyvt. Mit Sorgfalt gebaut <span class="sparkle" aria-hidden="true">✨</span>',
+
+      'common.copied': '<i class="fa-solid fa-check"></i> Kopiert!',
+      'common.copy_prompt': 'Wert kopieren:',
+      'common.copy_email_prompt': 'E-Mail-Adresse kopieren:'
+    }
+  };
+
+  function t(key, lang) {
+    const L = lang || currentLang;
+    return (i18n[L] && i18n[L][key]) || (i18n.en && i18n.en[key]) || '';
+  }
+
+  function applyTranslations(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    const nodes = document.querySelectorAll('[data-i18n]');
+    nodes.forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      const val = t(key, lang);
+      if (val) {
+        el.innerHTML = val;
+      }
+    });
+    updateLangButton(lang);
+  }
+
+  function updateLangButton(lang) {
+    if (langToggleBtn) {
+      langToggleBtn.innerHTML = t('nav.lang_btn', lang);
+      langToggleBtn.setAttribute('aria-label', lang === 'de' ? 'Sprache ändern' : 'Change language');
+    }
+  }
+
+  let currentLang = savedLang;
+  applyTranslations(currentLang);
+  localStorage.setItem('lang', currentLang);
   const navToggle = document.querySelector('.nav__toggle');
   const navLinks = document.querySelector('.nav__links');
   const themeToggle = document.getElementById('themeToggle');
@@ -25,7 +172,7 @@
         if (!email) return;
         await navigator.clipboard.writeText(email);
         const original = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        copyBtn.innerHTML = t('common.copied');
         copyBtn.disabled = true;
         setTimeout(() => {
           copyBtn.innerHTML = original;
@@ -34,7 +181,7 @@
       } catch (e) {
         console.warn('Clipboard failed, falling back to prompt');
         const email = emailTextEl.textContent.trim();
-        window.prompt('Copy email address:', email);
+        window.prompt(t('common.copy_email_prompt'), email);
       }
     });
   }
@@ -72,6 +219,14 @@
   }
 
   if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+  if (langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'en' ? 'de' : 'en';
+      localStorage.setItem('lang', currentLang);
+      applyTranslations(currentLang);
+    });
+  }
 
   if (navToggle && navLinks) {
     navToggle.addEventListener('click', () => {
@@ -245,11 +400,11 @@
         const text = getText();
         await navigator.clipboard.writeText(text);
         const original = btn.innerHTML;
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        btn.innerHTML = t('common.copied');
         btn.disabled = true;
         setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 1400);
       } catch (e) {
-        window.prompt('Copy value:', getText());
+        window.prompt(t('common.copy_prompt'), getText());
       }
     });
   }
