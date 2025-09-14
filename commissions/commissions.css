@@ -1,0 +1,573 @@
+/* Commission Page Specific Styles */
+
+/* Hero Visual */
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.commission-preview {
+  padding: 1.5rem;
+  max-width: 300px;
+  width: 100%;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.status-indicator.active {
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
+  animation: pulse 2s infinite;
+}
+
+.preview-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.preview-stages {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.preview-stages .stage {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.preview-stages .stage.completed {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.preview-stages .stage.active {
+  background: rgba(167, 139, 250, 0.2);
+  color: var(--accent);
+}
+
+/* Navigation Active State */
+.nav__links a.active {
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.7);
+}
+
+/* Commissions Grid */
+.commissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.commission-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.commission-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.commission-info h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.1rem;
+}
+
+.commission-client {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.commission-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.status-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge.in-progress {
+  background: rgba(167, 139, 250, 0.2);
+  color: var(--accent);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.status-badge.review {
+  background: rgba(249, 168, 212, 0.2);
+  color: var(--accent-3);
+  border: 1px solid rgba(249, 168, 212, 0.3);
+}
+
+.status-badge.planning {
+  background: rgba(125, 211, 252, 0.2);
+  color: var(--accent-2);
+  border: 1px solid rgba(125, 211, 252, 0.3);
+}
+
+.commission-id {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.commission-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.progress-percentage {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.commission-stages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.stage-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stage-item.completed {
+  background: rgba(34, 197, 94, 0.05);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.stage-item.active {
+  background: rgba(167, 139, 250, 0.05);
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+.stage-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.stage-item.completed .stage-icon {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.stage-item.active .stage-icon {
+  background: rgba(167, 139, 250, 0.2);
+  color: var(--accent);
+}
+
+.stage-details h4 {
+  margin: 0 0 0.2rem;
+  font-size: 0.95rem;
+}
+
+.stage-details p {
+  margin: 0 0 0.3rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stage-details time {
+  font-size: 0.8rem;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.commission-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Completed Commissions */
+.completed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.completed-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.completed-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.completed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.completion-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.completed-content {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.completed-content h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.client-name {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.completion-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.delivery-time {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  color: #fbbf24;
+}
+
+.rating span {
+  margin-left: 0.3rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.testimonial {
+  margin: 0;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent);
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.completion-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Commission Form */
+.commission-form-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-disabled {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.disabled-icon {
+  font-size: 4rem;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.form-disabled h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.form-disabled p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.contact-alternatives {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.commission-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.contact-details-section {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.form-group select option {
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.5rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.form-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero__visual {
+    order: -1;
+  }
+  
+  .commissions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .commission-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .commission-status {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .commission-form-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .commission-card {
+    padding: 1rem;
+  }
+  
+  .stage-item {
+    padding: 0.6rem;
+  }
+  
+  .commission-actions {
+    flex-direction: column;
+  }
+  
+  .commission-actions .btn {
+    justify-content: center;
+  }
+}

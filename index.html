@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal portfolio website" />
+    <title>Portfolio • Lyvt</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <link rel="icon" type="image/png" href="assets/pictures/avatar.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/pictures/avatar.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="assets/pictures/avatar.png" />
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" role="banner">
+        <nav class="nav container" aria-label="Primary">
+            <a href="#home" class="logo"> <span class="emoji">✦</span> <span>Lyvt</span> </a>
+            <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+            </button>
+            <ul class="nav__links">
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="commissions/index.html">Commissions</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+                <li><button id="langToggle" class="theme-toggle" aria-label="Change language" data-i18n="nav.lang_btn">🌐 EN</button></li>
+                <li><button id="themeToggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="main">
+        <section id="home" class="section hero container reveal" aria-label="Hero">
+            <div class="hero__content">
+                <p class="eyebrow" data-i18n="hero.eyebrow">Hi, I’m <span class="accent">Lyvt</span> <span class="sparkle" aria-hidden="true">✨</span></p>
+                <h1 class="headline" data-i18n="hero.headline">I build cozy, modern experiences on the web</h1>
+                <p class="subtitle" data-i18n="hero.subtitle">Focus: Web Dev • Backend • Game Dev • AI things — translating ideas into delightful products.</p>
+                <div class="hero__cta">
+                    <a href="#projects" class="btn primary" data-i18n="hero.cta_projects"><i class="fa-solid fa-rocket"></i> See Projects</a>
+                    <a href="#contact" class="btn ghost" data-i18n="hero.cta_contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+                </div>
+                <ul class="hero__badges" aria-label="Highlights">
+                    <li data-i18n="hero.badge_1"><i class="fa-solid fa-star"></i> 3+ years building stuff</li>
+                    <li data-i18n="hero.badge_2"><i class="fa-brands fa-github"></i> Open-source friendly</li>
+                    <li data-i18n="hero.badge_3"><i class="fa-solid fa-heart"></i> VTuber vibe, comfy UI</li>
+                </ul>
+            </div>
+            <div class="hero__avatar">
+                <img id="avatarImg" src="assets/pictures/avatar.png" alt="Portrait of Lyvt" loading="lazy" />
+            </div>
+        </section>
+
+        <section id="about" class="section container reveal" aria-label="About Me">
+            <div class="section__head">
+                <h2 class="section__title" data-i18n="about.title">About Me</h2>
+                <p class="section__subtitle" data-i18n="about.subtitle">Short and sweet.</p>
+            </div>
+            <div class="about grid">
+                <div class="about__card glass">
+                    <p data-i18n="about.p1">
+                        I’m a developer who loves crafting playful, high-quality experiences. My current focus is
+                        <strong>Web Development</strong> and <strong>Backend</strong>, with occasional adventures in
+                        <strong>Game Dev</strong> and <strong>AI</strong> tinkering. I enjoy systems that feel
+                        <em>comfy</em> and accessible.
+                    </p>
+                    <p data-i18n="about.p2">
+                        Outside of code: coffee, synthwave playlists, and VTuber streams in the background.
+                    </p>
+                </div>
+                <ul class="about__facts glass">
+                    <li data-i18n="about.fact_1"><i class="fa-solid fa-location-dot"></i> Based in Germany</li>
+                    <li data-i18n="about.fact_2"><i class="fa-solid fa-briefcase"></i> Open to requests & collabs</li>
+                    <li data-i18n="about.fact_3"><i class="fa-solid fa-graduation-cap"></i> Self-taught, always learning</li>
+                    <li data-i18n="about.fact_4"><i class="fa-solid fa-cake-candles"></i> Age: <span id="ageValue">18</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="section container reveal" aria-label="Skills & Tech Stack">
+            <div class="section__head">
+                <h2 class="section__title" data-i18n="skills.title">Skills & Tech</h2>
+                <p class="section__subtitle" data-i18n="skills.subtitle">A little badge wall of tools I love using.</p>
+            </div>
+            <ul class="badge-grid">
+                <li class="badge"><img src="https://cdn.simpleicons.org/html5/E34F26" alt="HTML5" /><span>HTML5</span></li>
+                <li class="badge"><img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3" /><span>CSS3</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" /><span>JavaScript</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="TypeScript" /><span>TypeScript</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" /><span>React</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/node.js/339933" alt="Node.js" /><span>Node.js</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" /><span>Python</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker" /><span>Docker</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="PostgreSQL" /><span>PostgreSQL</span></li>
+                <li class="badge"><img src="https://cdn.simpleicons.org/git/F05033" alt="Git" /><span>Git</span></li>
+                <li class="badge"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" alt="C#" /><span>C#</span></li>
+                
+            </ul>
+        </section>
+
+        <section id="projects" class="section container reveal" aria-label="Projects">
+            <div class="section__head">
+                <h2 class="section__title" data-i18n="projects.title">Projects</h2>
+                <p class="section__subtitle" data-i18n="projects.subtitle">Highlights with a bit of story.</p>
+            </div>
+
+            <div class="projects">
+                <article class="project glass">
+                    <div class="project__media">
+                        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="Cozy coding and streaming setup with RGB lighting" loading="lazy" />
+                    </div>
+                    <div class="project__body">
+                        <h3 class="project__title" data-i18n="projects.card_1.title">LunixVT Homepage</h3>
+                        <p class="project__desc" data-i18n="projects.card_1.desc">A custom website built for the streamer LunixVT as a central hub for their online presence. The site works as a stylish linktree, featuring animated backgrounds, background music, and a clean UI that connects fans to Twitch, YouTube, TikTok, Twitter, and more.</p>
+                        <ul class="project__stack">
+                            <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>API-REST</li>
+                        </ul>
+                        <div class="project__links">
+                            <a class="btn tiny" href="https://lunixvt.online" target="_blank" rel="noopener" data-i18n="projects.card_1.demo">Live Demo</a>
+                            <a class="btn tiny ghost" href="#" target="_blank" rel="noopener" data-i18n="projects.card_1.github"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project glass">
+                    <div class="project__media">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1200&auto=format&fit=crop" alt="Windows desktop with beautiful wallpaper customization" loading="lazy" />
+                    </div>
+                    <div class="project__body">
+                        <h3 class="project__title" data-i18n="projects.card_2.title">PaperLocked</h3>
+                        <p class="project__desc" data-i18n="projects.card_2.desc">A lightweight Windows tool that allows users to change their desktop wallpaper on systems with restricted personalization settings. Built with simplicity in mind, LockedPaper features a clean interface, quick image selection, and one-click application for a seamless wallpaper experience.</p>
+                        <ul class="project__stack">
+                            <li>C#</li>
+                        </ul>
+                        <div class="project__links">
+                            <a class="btn tiny" href="#" target="_blank" rel="noopener" data-i18n="projects.card_2.demo">Live Demo</a>
+                            <a class="btn tiny ghost" href="https://github.com/Lyvt-Dev/LockedPaper/tree/main" target="_blank" rel="noopener" data-i18n="projects.card_2.github"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="section container reveal" aria-label="Contact">
+            <div class="section__head">
+                <h2 class="section__title" data-i18n="contact.title">Contact</h2>
+                <p class="section__subtitle" data-i18n="contact.subtitle">Let’s build something together.</p>
+            </div>
+
+            <div class="contact glass">
+                <div class="contact__intro">
+                    <p data-i18n="contact.intro">My inbox is always open — whether you have a question, a project idea, or just want to say hi.</p>
+                </div>
+
+                <div class="contact__card">
+                    <div class="contact__email">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span id="emailText">contact@calmly-dev.xyz</span>
+                        <div class="contact__email-actions">
+                            <a class="btn tiny primary" href="mailto:contact@calmly-dev.xyz" data-i18n="contact.write_email">Write Email</a>
+                            <button id="copyEmailBtn" class="btn tiny ghost" type="button" data-i18n="contact.copy"><i class="fa-solid fa-copy"></i> Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="contact__actions">
+                        <a class="contact-pill" href="https://github.com/Lyvt-Dev" target="_blank" rel="noopener" aria-label="GitHub" data-i18n="contact.github"><i class="fa-brands fa-github"></i> GitHub</a>
+                        <a class="contact-pill" href="https://x.com/lyvt_dev" target="_blank" rel="noopener" aria-label="Twitter" data-i18n="contact.twitter"><i class="fa-brands fa-x-twitter"></i> Twitter</a>
+                        <button id="discordContactBtn" class="contact-pill" type="button" aria-haspopup="dialog" aria-controls="discordModal" aria-label="Discord" data-i18n="contact.discord"><i class="fa-brands fa-discord"></i> Discord</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="discordModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="discordModalTitle" hidden
+             data-discord-id="699983277481525379" data-discord-username="_.lyvt">
+            <div class="modal__backdrop" data-close></div>
+            <div class="modal__dialog glass">
+                <button class="modal__close" type="button" aria-label="Close" data-close>
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="modal__header">
+                    <div class="modal__avatar">
+                        <img id="discordModalAvatar" src="assets/pictures/avatar.png" alt="Discord avatar" />
+                    </div>
+                    <div class="modal__title">
+                        <h3 id="discordModalTitle" data-i18n="modal.discord_title">Discord</h3>
+                        <p class="muted" data-i18n="modal.discord_subtitle">Connect with me on Discord</p>
+                    </div>
+                </div>
+                <div class="modal__body">
+                    <div class="modal__row">
+                        <span class="label" data-i18n="modal.username">Username</span>
+                        <code id="discordUsername">_.lyvt</code>
+                        <button id="copyDiscordUsername" class="btn tiny ghost" type="button" data-i18n="modal.copy"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                    <div class="modal__row">
+                        <span class="label" data-i18n="modal.user_id">User ID</span>
+                        <code id="discordUserId">699983277481525379</code>
+                        <button id="copyDiscordId" class="btn tiny ghost" type="button" data-i18n="modal.copy"><i class="fa-solid fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+                <div class="modal__footer">
+                    <a id="openDiscordProfile" class="btn primary" href="https://discord.com/users/699983277481525379" target="_blank" rel="noopener" data-i18n="modal.open_profile">
+                        <i class="fa-brands fa-discord"></i> Open Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p data-i18n="footer.text">  Lyvt. Built with care <span class="sparkle" aria-hidden="true">✨</span></p>
+        </div>
+    </footer>
+
+    <script src="assets/javascript/main.js"></script>
+</body>
+</html>
