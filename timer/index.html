@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Secret countdown timer" />
+    <title>Secret Timer • Lyvt</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <style>
+        .timer-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .timer-card {
+            max-width: 800px;
+            width: 100%;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timer-card::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            pointer-events: none;
+            background: radial-gradient(600px 300px at 50% 50%, rgba(167,139,250,.3), transparent),
+                        radial-gradient(400px 200px at 20% 80%, rgba(125,211,252,.25), transparent),
+                        radial-gradient(500px 300px at 80% 20%, rgba(249,168,212,.2), transparent);
+        }
+
+        .timer-title {
+            margin: 0 0 1rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(167,139,250,.5);
+        }
+
+        .timer-subtitle {
+            margin: 0 0 3rem;
+            color: var(--muted);
+            font-size: 1.2rem;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .countdown-item {
+            background: var(--surface);
+            backdrop-filter: blur(var(--card-blur)) saturate(130%);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: var(--radius);
+            padding: 2rem 1rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            font-family: 'Fira Code', monospace;
+            color: var(--text);
+            text-shadow: 0 0 20px rgba(167,139,250,.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .timer-message {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .timer-message p {
+            margin: 0;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .secret-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(167,139,250,.2), rgba(125,211,252,.2));
+            border: 1px solid rgba(167,139,250,.3);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .glow {
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(167,139,250,.6); }
+            to { text-shadow: 0 0 30px rgba(167,139,250,.9), 0 0 40px rgba(125,211,252,.5); }
+        }
+
+        @media (max-width: 600px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .countdown-item {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .timer-card {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+
+    <link rel="icon" type="image/png" href="../assets/pictures/avatar.png" sizes="32x32" />
+</head>
+<body>
+    <div class="timer-container">
+        <div class="timer-card glass">
+            <div class="secret-badge pulse">
+                <i class="fa-solid fa-lock"></i>
+                Secret Timer
+            </div>
+            
+            <h1 class="timer-title glow">The Countdown</h1>
+            <p class="timer-subtitle">Till i gonna kill myself...</p>
+            
+            <div class="countdown-grid">
+                <div class="countdown-item">
+                    <span id="years" class="countdown-number">0</span>
+                    <span class="countdown-label">Years</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="days" class="countdown-number">0</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours" class="countdown-number">0</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes" class="countdown-number">0</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds" class="countdown-number">0</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            
+            <div class="timer-message">
+                <p id="countdown-message">Time until December 14, 2032...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Target date: December 14, 2032
+        const targetDate = new Date('December 14, 2032 00:00:00').getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                // Timer has ended
+                document.getElementById('years').textContent = '0';
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                document.getElementById('countdown-message').textContent = 'The moment has arrived! ✨';
+                return;
+            }
+            
+            // Calculate time units
+            const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+            const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update the display
+            document.getElementById('years').textContent = years;
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            // Update message based on time remaining
+            if (years > 0) {
+                document.getElementById('countdown-message').textContent = `${years} year${years !== 1 ? 's' : ''} and ${days} day${days !== 1 ? 's' : ''} until the secret is revealed...`;
+            } else if (days > 30) {
+                document.getElementById('countdown-message').textContent = `${days} days until December 14, 2032...`;
+            } else if (days > 0) {
+                document.getElementById('countdown-message').textContent = `Only ${days} day${days !== 1 ? 's' : ''} left! The anticipation builds...`;
+            } else if (hours > 0) {
+                document.getElementById('countdown-message').textContent = `Less than a day remaining! ${hours} hour${hours !== 1 ? 's' : ''} to go...`;
+            } else {
+                document.getElementById('countdown-message').textContent = `Final countdown! Minutes and seconds left...`;
+            }
+        }
+        
+        // Update immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Add some interactive effects
+        document.querySelectorAll('.countdown-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-2px)';
+                item.style.boxShadow = '0 15px 40px rgba(124,58,237,.4), 0 0 40px rgba(125,211,252,.3)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+                item.style.boxShadow = 'var(--shadow)';
+            });
+        });
+    </script>
+</body>
+</html>
