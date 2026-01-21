@@ -59,7 +59,7 @@
       'modal.copy': '<i class="fa-solid fa-copy"></i> Copy',
       'modal.open_profile': '<i class="fa-brands fa-discord"></i> Open Profile',
 
-      'footer.text': '  2025 Lyvt. Built with care <span class="sparkle" aria-hidden="true">✨</span>',
+      'footer.text': 'Made with <i class="fa-solid fa-heart"></i> by Lyvt',
 
       'common.copied': '<i class="fa-solid fa-check"></i> Copied!',
       'common.copy_prompt': 'Copy value:',
@@ -120,7 +120,7 @@
       'modal.copy': '<i class="fa-solid fa-copy"></i> Kopieren',
       'modal.open_profile': '<i class="fa-brands fa-discord"></i> Profil öffnen',
 
-      'footer.text': '  2025 Lyvt. Mit Sorgfalt gebaut <span class="sparkle" aria-hidden="true">✨</span>',
+      'footer.text': 'Gemacht mit <i class="fa-solid fa-heart"></i> bei Lyvt',
 
       'common.copied': '<i class="fa-solid fa-check"></i> Kopiert!',
       'common.copy_prompt': 'Wert kopieren:',
